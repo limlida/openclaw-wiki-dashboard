@@ -108,7 +108,7 @@
   API.fetchSearchIndex = async function () {
     const auditRepo = Dash.config.auditRepo;
     if (!auditRepo) throw new Error("auditRepo not configured");
-    const url = API.getRawUrl(auditRepo, "search-index.json");
+    const url = API.getRawUrl(auditRepo, "reports/search-index.json");
     return fetchJSON(url, 300_000);
   };
 
