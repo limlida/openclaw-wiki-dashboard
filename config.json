@@ -1,0 +1,6 @@
+{
+  "wikiRepo": "limlida/SongWiki",
+  "auditRepo": "limlida/openclaw-wiki-auditor",
+  "refreshIntervalSec": 300,
+  "trendWeeks": 12
+}

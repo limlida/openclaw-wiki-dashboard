@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OpenClaw Wiki Dashboard</title>
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <!-- CDN Dependencies (loaded in order, defer ensures sequential execution) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/flexsearch@0.7.43/dist/flexsearch.bundle.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked@11.2.0/lib/marked.umd.js" defer></script>
+  <!-- Application modules -->
+  <script src="js/github-api.js" defer></script>
+  <script src="js/search.js" defer></script>
+  <script src="js/audit-view.js" defer></script>
+  <script src="js/wiki-view.js" defer></script>
+  <script src="js/graph-view.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <div id="app">
+    <!-- Alert Banner -->
+    <div id="alert-banner">
+      <span class="alert-text"></span>
+      <button class="alert-close" aria-label="Close alert">&times;</button>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+      <div class="spinner"></div>
+    </div>
+
+    <!-- Sidebar -->
+    <nav id="sidebar">
+      <button class="nav-btn active" data-view="audit" data-label="Audit" title="Audit Dashboard">
+        📊
+      </button>
+      <button class="nav-btn" data-view="wiki" data-label="Wiki" title="Wiki Browser">
+        📖
+      </button>
+      <button class="nav-btn" data-view="graph" data-label="Graph" title="Knowledge Graph">
+        🕸
+      </button>
+    </nav>
+
+    <!-- Content Area -->
+    <main id="content">
+      <!-- Audit View -->
+      <section id="view-audit" class="view active">
+        <div class="loading-placeholder">
+          <div class="spinner" style="margin:0 auto 12px;"></div>
+          Loading audit data...
+        </div>
+      </section>
+
+      <!-- Wiki View -->
+      <section id="view-wiki" class="view">
+        <!-- Search bar at top of wiki view -->
+        <div class="search-bar" style="margin-bottom:16px;">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search wiki pages..."
+            autocomplete="off"
+          />
+          <button type="button">Search</button>
+          <div class="search-results" id="search-results"></div>
+        </div>
+        <!-- Dynamic layout inserted by wiki-view.js -->
+        <div class="loading-placeholder">
+          <div class="spinner" style="margin:0 auto 12px;"></div>
+          Loading wiki browser...
+        </div>
+      </section>
+
+      <!-- Graph View -->
+      <section id="view-graph" class="view">
+        <div class="loading-placeholder">
+          <div class="spinner" style="margin:0 auto 12px;"></div>
+          Building graph...
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
